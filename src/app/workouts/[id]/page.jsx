@@ -1,302 +1,180 @@
 "use client";
 
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 import {
+  FaArrowLeft,
   FaDumbbell,
   FaFire,
   FaClock,
-  FaPlus,
   FaCheckCircle,
-  FaRunning,
-  FaHeartbeat,
-  FaBolt,
 } from "react-icons/fa";
 
-export default function WorkoutsPage() {
-  // Pre-loaded workouts for today & tomorrow
-  const [workouts, setWorkouts] = useState([
-    {
-      id: 1,
-      title: "Full Body Hypertrophy",
-      category: "Strength",
-      duration: "45 min",
-      caloriesBurned: 320,
-      day: "Today",
-      completed: true,
-      icon: <FaDumbbell className="text-[#00A3FF]" />,
-    },
-    {
-      id: 2,
-      category: "Cardio",
-      title: "HIIT Fat Burner",
-      duration: "20 min",
-      caloriesBurned: 280,
-      day: "Today",
-      completed: true,
-      icon: <FaFire className="text-[#00A3FF]" />,
-    },
-    {
-      id: 3,
-      category: "Strength",
-      title: "Upper Body Strength",
-      duration: "40 min",
-      caloriesBurned: 350,
-      day: "Tomorrow",
-      completed: false,
-      icon: <FaBolt className="text-[#00A3FF]" />,
-    },
-    {
-      id: 4,
-      category: "Endurance",
-      title: "Outdoor Running",
-      duration: "30 min",
-      caloriesBurned: 420,
-      day: "Tomorrow",
-      completed: false,
-      icon: <FaRunning className="text-[#00A3FF]" />,
-    },
-  ]);
+export default function WorkoutDetailPage() {
+  const params = useParams();
+  const { id } = params;
 
-  // Form state for adding a new workout
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("Strength");
-  const [duration, setDuration] = useState("30");
-  const [calories, setCalories] = useState("250");
-  const [day, setDay] = useState("Today");
+  const [workout, setWorkout] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const handleAddWorkout = (e) => {
-    e.preventDefault();
-    if (!title.trim()) return;
+  useEffect(() => {
+    if (!id) return;
 
-    const newWorkoutItem = {
-      id: Date.now(),
-      title: title.trim(),
-      category,
-      duration: `${duration} min`,
-      caloriesBurned: parseInt(calories) || 200,
-      day,
-      completed: false,
-      icon: <FaDumbbell className="text-[#00A3FF]" />,
-    };
+    async function fetchWorkoutDetails() {
+      try {
+        setLoading(true);
+        const res = await fetch(
+          `https://api.abcz.workers.dev/api/fitlog/${id}`,
+        );
+        if (!res.ok) throw new Error("Failed to fetch");
+        const json = await res.json();
 
-    setWorkouts([newWorkoutItem, ...workouts]);
-    setTitle("");
-    toast.success("Workout added successfully!");
-  };
+        // Handle various API response structures safely
+        const item = json.data || json.workout || json;
+        setWorkout(item);
+      } catch (err) {
+        console.error("API Error, using fallback:", err);
+        setWorkout({
+          id: id,
+          title: "Workout Details",
+          category: "Strength",
+          duration: "30 min",
+          caloriesBurned: 200,
+          description:
+            "Perform with proper form, steady breathing, and controlled tempo.",
+          day: "Today",
+          completed: false,
+        });
+      } finally {
+        setLoading(false);
+      }
+    }
 
-  const toggleComplete = (id) => {
-    setWorkouts(
-      workouts.map((w) => {
-        if (w.id === id) {
-          const updated = !w.completed;
-          toast(
-            updated ? `Completed: ${w.title}! 🎉` : `Unchecked: ${w.title}`,
-            {
-              icon: updated ? "🔥" : "ℹ️",
-            },
-          );
-          return { ...w, completed: updated };
-        }
-        return w;
-      }),
+    fetchWorkoutDetails();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#030816] text-white flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="w-12 h-12 border-4 border-[#00A3FF] border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="text-slate-400 text-xs font-mono uppercase tracking-wider">
+            Loading workout details...
+          </p>
+        </div>
+      </div>
     );
-  };
+  }
 
-  const totalCaloriesBurned = workouts
-    .filter((w) => w.completed)
-    .reduce((acc, curr) => acc + curr.caloriesBurned, 0);
+  // Extract title and properties safely supporting multiple API naming conventions
+  const title =
+    workout?.title || workout?.name || workout?.exercise || `Workout #${id}`;
+  const category = workout?.category || "Strength";
+  const duration = workout?.duration || workout?.time || "30 min";
+  const calories =
+    workout?.caloriesBurned || workout?.calories || workout?.burn || "200";
+  const description =
+    workout?.description ||
+    workout?.details ||
+    "Focus on form, steady execution, and core stability throughout the session.";
+  const day = workout?.day || "Today";
+
+  const fallbackImage =
+    "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1000&q=80";
 
   return (
     <div className="min-h-screen bg-[#030816] text-white px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-      {/* Top Banner */}
-      <div className="max-w-7xl mx-auto bg-[#05112B]/90 border border-sky-800/40 rounded-3xl p-6 sm:p-8 shadow-[0_0_50px_rgba(0,163,255,0.15)] backdrop-blur-2xl relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <div className="space-y-2">
-          <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#00A3FF] font-semibold">
-            WORKOUT & BURN
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white">
-            Plan & Crush Your Workouts 🏋️‍♂️
-          </h1>
-          <p className="text-slate-400 text-xs sm:text-sm max-w-xl">
-            Pick your routines for today and tomorrow, track active session
-            durations, and watch your calories burn in real-time.
-          </p>
-        </div>
+      <div className="max-w-4xl mx-auto space-y-6">
+        {/* Back button */}
+        <Link
+          href="/workouts"
+          className="inline-flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-[#00A3FF] transition"
+        >
+          <FaArrowLeft />
+          <span>Back to Workouts</span>
+        </Link>
 
-        {/* Live Burned Counter Pill */}
-        <div className="bg-[#03091B] border border-sky-800/60 px-6 py-4 rounded-2xl flex items-center gap-4 shadow-[0_0_20px_rgba(0,163,255,0.2)]">
-          <div className="w-12 h-12 rounded-xl bg-[#061536] border border-sky-700/50 flex items-center justify-center text-[#00A3FF] text-xl">
-            <FaFire />
-          </div>
-          <div>
-            <p className="text-[10px] uppercase font-bold text-slate-400">
-              Total Burned (Completed)
-            </p>
-            <p className="text-2xl font-black text-white">
-              {totalCaloriesBurned}{" "}
-              <span className="text-xs font-normal text-slate-400">kcal</span>
-            </p>
-          </div>
-        </div>
-      </div>
+        {/* Main Detail Card */}
+        <div className="bg-[#05112B]/90 border border-sky-800/40 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,163,255,0.15)] backdrop-blur-2xl">
+          {/* Image Banner */}
+          <div className="relative w-full h-64 sm:h-80 overflow-hidden bg-[#03091B]">
+            <img
+              src={workout?.image || fallbackImage}
+              alt={title}
+              className="w-full h-full object-cover object-center opacity-85"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#05112B] via-transparent to-black/30" />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left Column: Scheduled Workouts List */}
-        <div className="lg:col-span-8 space-y-6">
-          <div className="flex items-center justify-between">
-            <h3 className="font-bold text-sm uppercase tracking-wider text-white flex items-center gap-2">
-              <FaDumbbell className="text-[#00A3FF]" />
-              <span>Today & Tomorrow Schedule</span>
-            </h3>
-            <span className="text-xs text-slate-400 font-mono">
-              {workouts.filter((w) => w.completed).length} of {workouts.length}{" "}
-              completed
-            </span>
+            <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+              <div className="space-y-1">
+                <span className="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-[#03091B]/80 border border-sky-900 text-[#00A3FF] font-bold backdrop-blur-md">
+                  {category} • {day}
+                </span>
+                <h1 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md pt-1">
+                  {title}
+                </h1>
+              </div>
+              {workout?.completed && (
+                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 text-xs font-bold backdrop-blur-md">
+                  <FaCheckCircle /> Completed
+                </span>
+              )}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {workouts.map((w) => (
-              <div
-                key={w.id}
-                className={`bg-[#05112B]/85 border rounded-3xl p-6 backdrop-blur-xl transition-all duration-200 flex flex-col justify-between space-y-4 ${
-                  w.completed
-                    ? "border-sky-900/30 opacity-75"
-                    : "border-sky-800/40 shadow-[0_0_25px_rgba(0,163,255,0.1)] hover:border-[#00A3FF]"
-                }`}
+          <div className="p-8 sm:p-10 space-y-8">
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-[#03091B] border border-sky-950 p-5 rounded-2xl flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-[#061536] border border-sky-800/40 flex items-center justify-center text-[#00A3FF]">
+                  <FaClock />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase font-bold text-slate-500">
+                    Duration
+                  </p>
+                  <p className="text-lg font-black text-white">{duration}</p>
+                </div>
+              </div>
+
+              <div className="bg-[#03091B] border border-sky-950 p-5 rounded-2xl flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-[#061536] border border-sky-800/40 flex items-center justify-center text-[#00A3FF]">
+                  <FaFire />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase font-bold text-slate-500">
+                    Calories Burned
+                  </p>
+                  <p className="text-lg font-black text-white">
+                    {calories}{" "}
+                    <span className="text-xs text-slate-400 font-normal">
+                      kcal
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Description Section */}
+            <div className="space-y-3 pt-2">
+              <h3 className="font-bold text-xs uppercase tracking-wider text-slate-400">
+                Workout Description & Instructions
+              </h3>
+              <p className="text-slate-300 text-sm leading-relaxed bg-[#03091B] p-6 rounded-2xl border border-sky-950">
+                {description}
+              </p>
+            </div>
+
+            {/* Action Button */}
+            <div className="pt-2 flex items-center justify-end">
+              <Link
+                href="/workouts"
+                className="px-8 py-3.5 rounded-xl bg-[#00A3FF] text-white font-bold text-xs uppercase tracking-wide hover:bg-[#008fe3] transition shadow-[0_0_20px_rgba(0,163,255,0.4)]"
               >
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-[#03091B] border border-sky-900/50 flex items-center justify-center shadow">
-                      {w.icon}
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-mono uppercase font-bold text-[#00A3FF]">
-                        {w.category} • {w.day}
-                      </span>
-                      <h4 className="font-bold text-sm text-white">
-                        {w.title}
-                      </h4>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => toggleComplete(w.id)}
-                    className={`w-7 h-7 rounded-full flex items-center justify-center transition cursor-pointer ${
-                      w.completed
-                        ? "bg-emerald-500 text-white shadow-[0_0_12px_rgba(16,185,129,0.5)]"
-                        : "bg-[#03091B] border border-sky-800 text-slate-500 hover:text-white"
-                    }`}
-                  >
-                    <FaCheckCircle className="text-xs" />
-                  </button>
-                </div>
-
-                <div className="flex items-center justify-between pt-2 border-t border-sky-950 text-xs text-slate-400">
-                  <span className="flex items-center gap-1.5 font-mono">
-                    <FaClock className="text-[#00A3FF]" /> {w.duration}
-                  </span>
-                  <span className="flex items-center gap-1.5 font-bold text-white font-mono">
-                    <FaFire className="text-[#00A3FF]" /> {w.caloriesBurned}{" "}
-                    kcal
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Right Column: Add Custom Workout Form */}
-        <div className="lg:col-span-4 space-y-6">
-          <div className="bg-[#05112B]/85 border border-sky-800/40 rounded-3xl p-6 sm:p-8 backdrop-blur-xl space-y-6 shadow-[0_0_30px_rgba(0,163,255,0.1)]">
-            <h3 className="font-bold text-sm uppercase tracking-wider text-white flex items-center gap-2">
-              <FaPlus className="text-[#00A3FF]" />
-              <span>Add Custom Workout</span>
-            </h3>
-
-            <form onSubmit={handleAddWorkout} className="space-y-4">
-              <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                  Workout Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  placeholder="e.g. Leg Day & Squats"
-                  className="w-full px-4 py-3 rounded-xl bg-[#03091B] border border-sky-950 text-white placeholder-slate-600 text-xs focus:outline-none focus:border-[#00A3FF] transition"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                    Category
-                  </label>
-                  <select
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    className="w-full px-3 py-3 rounded-xl bg-[#03091B] border border-sky-950 text-white text-xs focus:outline-none focus:border-[#00A3FF] transition"
-                  >
-                    <option value="Strength">Strength</option>
-                    <option value="Cardio">Cardio</option>
-                    <option value="Endurance">Endurance</option>
-                    <option value="Flexibility">Flexibility</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                    Schedule
-                  </label>
-                  <select
-                    value={day}
-                    onChange={(e) => setDay(e.target.value)}
-                    className="w-full px-3 py-3 rounded-xl bg-[#03091B] border border-sky-950 text-white text-xs focus:outline-none focus:border-[#00A3FF] transition"
-                  >
-                    <option value="Today">Today</option>
-                    <option value="Tomorrow">Tomorrow</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                    Duration (min)
-                  </label>
-                  <input
-                    type="number"
-                    min="5"
-                    max="180"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-[#03091B] border border-sky-950 text-white text-xs focus:outline-none focus:border-[#00A3FF] transition"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                    Est. Calories (kcal)
-                  </label>
-                  <input
-                    type="number"
-                    min="10"
-                    max="2000"
-                    value={calories}
-                    onChange={(e) => setCalories(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-[#03091B] border border-sky-950 text-white text-xs focus:outline-none focus:border-[#00A3FF] transition"
-                  />
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-3.5 rounded-xl bg-[#00A3FF] text-white font-bold text-xs uppercase tracking-wide hover:bg-[#008fe3] transition shadow-[0_0_20px_rgba(0,163,255,0.45)] cursor-pointer mt-2"
-              >
-                Add Workout
-              </button>
-            </form>
+                Done / Back to Library
+              </Link>
+            </div>
           </div>
         </div>
       </div>

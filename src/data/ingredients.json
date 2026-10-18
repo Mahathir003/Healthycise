@@ -1,512 +1,402 @@
 [
   {
-    "id": "ing_01",
-    "name": "Chicken Breast (skinless, raw)",
+    "id": "ING001",
+    "name": "Chicken Breast",
     "category": "Meat & Poultry",
-    "caloriesPer100g": 165,
-    "protein": 31.0,
-    "carbs": 0.0,
-    "fat": 3.6
+    "calories_per_gram": 1.65,
+    "calories_per_100g": 165,
+    "image_url": "https://www.themealdb.com/images/ingredients/Chicken%20Breast.png"
   },
   {
-    "id": "ing_02",
-    "name": "Chicken Thigh (skinless, raw)",
+    "id": "ING002",
+    "name": "Beef",
     "category": "Meat & Poultry",
-    "caloriesPer100g": 209,
-    "protein": 26.0,
-    "carbs": 0.0,
-    "fat": 10.9
+    "calories_per_gram": 2.5,
+    "calories_per_100g": 250,
+    "image_url": "https://www.themealdb.com/images/ingredients/Beef.png"
   },
   {
-    "id": "ing_03",
-    "name": "Ground Beef (90% lean, raw)",
+    "id": "ING003",
+    "name": "Pork",
     "category": "Meat & Poultry",
-    "caloriesPer100g": 176,
-    "protein": 20.0,
-    "carbs": 0.0,
-    "fat": 10.0
+    "calories_per_gram": 2.42,
+    "calories_per_100g": 242,
+    "image_url": "https://www.themealdb.com/images/ingredients/Pork.png"
   },
   {
-    "id": "ing_04",
-    "name": "Ground Beef (80% lean, raw)",
+    "id": "ING004",
+    "name": "Lamb",
     "category": "Meat & Poultry",
-    "caloriesPer100g": 254,
-    "protein": 17.2,
-    "carbs": 0.0,
-    "fat": 20.0
+    "calories_per_gram": 2.94,
+    "calories_per_100g": 294,
+    "image_url": "https://www.themealdb.com/images/ingredients/Lamb.png"
   },
   {
-    "id": "ing_05",
-    "name": "Beef Sirloin Steak (raw)",
+    "id": "ING005",
+    "name": "Bacon",
     "category": "Meat & Poultry",
-    "caloriesPer100g": 183,
-    "protein": 22.0,
-    "carbs": 0.0,
-    "fat": 10.0
+    "calories_per_gram": 5.41,
+    "calories_per_100g": 541,
+    "image_url": "https://www.themealdb.com/images/ingredients/Bacon.png"
   },
   {
-    "id": "ing_06",
-    "name": "Turkey Breast (skinless, raw)",
-    "category": "Meat & Poultry",
-    "caloriesPer100g": 135,
-    "protein": 30.0,
-    "carbs": 0.0,
-    "fat": 1.0
-  },
-  {
-    "id": "ing_07",
-    "name": "Pork Loin Chops (raw)",
-    "category": "Meat & Poultry",
-    "caloriesPer100g": 143,
-    "protein": 21.0,
-    "carbs": 0.0,
-    "fat": 6.0
-  },
-  {
-    "id": "ing_08",
-    "name": "Lamb Chops (raw)",
-    "category": "Meat & Poultry",
-    "caloriesPer100g": 258,
-    "protein": 16.5,
-    "carbs": 0.0,
-    "fat": 21.0
-  },
-
-  {
-    "id": "ing_09",
-    "name": "Salmon Fillet (raw)",
+    "id": "ING006",
+    "name": "Salmon",
     "category": "Seafood",
-    "caloriesPer100g": 208,
-    "protein": 20.4,
-    "carbs": 0.0,
-    "fat": 13.4
+    "calories_per_gram": 2.08,
+    "calories_per_100g": 208,
+    "image_url": "https://www.themealdb.com/images/ingredients/Salmon.png"
   },
   {
-    "id": "ing_10",
-    "name": "Tuna (Yellowfin, raw)",
+    "id": "ING007",
+    "name": "Tuna",
     "category": "Seafood",
-    "caloriesPer100g": 109,
-    "protein": 24.4,
-    "carbs": 0.0,
-    "fat": 0.5
+    "calories_per_gram": 1.32,
+    "calories_per_100g": 132,
+    "image_url": "https://www.themealdb.com/images/ingredients/Tuna.png"
   },
   {
-    "id": "ing_11",
-    "name": "Tilapia Fillet (raw)",
+    "id": "ING008",
+    "name": "Prawns",
     "category": "Seafood",
-    "caloriesPer100g": 96,
-    "protein": 20.1,
-    "carbs": 0.0,
-    "fat": 1.7
+    "calories_per_gram": 0.99,
+    "calories_per_100g": 99,
+    "image_url": "https://www.themealdb.com/images/ingredients/King%20Prawns.png"
   },
   {
-    "id": "ing_12",
-    "name": "Shrimp / Prawn (raw)",
-    "category": "Seafood",
-    "caloriesPer100g": 85,
-    "protein": 20.1,
-    "carbs": 0.9,
-    "fat": 0.5
-  },
-  {
-    "id": "ing_13",
-    "name": "Atlantic Cod (raw)",
-    "category": "Seafood",
-    "caloriesPer100g": 82,
-    "protein": 17.8,
-    "carbs": 0.0,
-    "fat": 0.7
-  },
-
-  {
-    "id": "ing_14",
-    "name": "Tomato (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 18,
-    "protein": 0.9,
-    "carbs": 3.9,
-    "fat": 0.2
-  },
-  {
-    "id": "ing_15",
-    "name": "Onion (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 40,
-    "protein": 1.1,
-    "carbs": 9.3,
-    "fat": 0.1
-  },
-  {
-    "id": "ing_16",
-    "name": "Garlic (raw cloves)",
-    "category": "Vegetables",
-    "caloriesPer100g": 149,
-    "protein": 6.4,
-    "carbs": 33.1,
-    "fat": 0.5
-  },
-  {
-    "id": "ing_17",
-    "name": "Green Chili Pepper (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 40,
-    "protein": 2.0,
-    "carbs": 9.5,
-    "fat": 0.2
-  },
-  {
-    "id": "ing_18",
-    "name": "Broccoli (raw florets)",
-    "category": "Vegetables",
-    "caloriesPer100g": 34,
-    "protein": 2.8,
-    "carbs": 6.6,
-    "fat": 0.4
-  },
-  {
-    "id": "ing_19",
-    "name": "Spinach (fresh raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 23,
-    "protein": 2.9,
-    "carbs": 3.6,
-    "fat": 0.4
-  },
-  {
-    "id": "ing_20",
-    "name": "Kale (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 35,
-    "protein": 2.9,
-    "carbs": 4.4,
-    "fat": 1.5
-  },
-  {
-    "id": "ing_21",
-    "name": "Carrot (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 41,
-    "protein": 0.9,
-    "carbs": 9.6,
-    "fat": 0.2
-  },
-  {
-    "id": "ing_22",
-    "name": "Cucumber (raw, with peel)",
-    "category": "Vegetables",
-    "caloriesPer100g": 15,
-    "protein": 0.7,
-    "carbs": 3.6,
-    "fat": 0.1
-  },
-  {
-    "id": "ing_23",
-    "name": "Red Bell Pepper (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 31,
-    "protein": 1.0,
-    "carbs": 6.0,
-    "fat": 0.3
-  },
-  {
-    "id": "ing_24",
-    "name": "Green Bell Pepper (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 20,
-    "protein": 0.9,
-    "carbs": 4.6,
-    "fat": 0.2
-  },
-  {
-    "id": "ing_25",
-    "name": "White Potato (raw, peeled)",
-    "category": "Vegetables",
-    "caloriesPer100g": 77,
-    "protein": 2.0,
-    "carbs": 17.5,
-    "fat": 0.1
-  },
-  {
-    "id": "ing_26",
-    "name": "Sweet Potato (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 86,
-    "protein": 1.6,
-    "carbs": 20.1,
-    "fat": 0.1
-  },
-  {
-    "id": "ing_27",
-    "name": "Cauliflower (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 25,
-    "protein": 1.9,
-    "carbs": 5.0,
-    "fat": 0.3
-  },
-  {
-    "id": "ing_28",
-    "name": "Green Cabbage (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 25,
-    "protein": 1.3,
-    "carbs": 5.8,
-    "fat": 0.1
-  },
-  {
-    "id": "ing_29",
-    "name": "White Button Mushroom (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 22,
-    "protein": 3.1,
-    "carbs": 3.3,
-    "fat": 0.3
-  },
-  {
-    "id": "ing_30",
-    "name": "Zucchini (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 17,
-    "protein": 1.2,
-    "carbs": 3.1,
-    "fat": 0.3
-  },
-  {
-    "id": "ing_31",
-    "name": "Green Snap Beans (raw)",
-    "category": "Vegetables",
-    "caloriesPer100g": 31,
-    "protein": 1.8,
-    "carbs": 7.0,
-    "fat": 0.2
-  },
-
-  {
-    "id": "ing_32",
-    "name": "Banana (raw)",
-    "category": "Fruits",
-    "caloriesPer100g": 89,
-    "protein": 1.1,
-    "carbs": 22.8,
-    "fat": 0.3
-  },
-  {
-    "id": "ing_33",
-    "name": "Apple (raw, with skin)",
-    "category": "Fruits",
-    "caloriesPer100g": 52,
-    "protein": 0.3,
-    "carbs": 13.8,
-    "fat": 0.2
-  },
-  {
-    "id": "ing_34",
-    "name": "Orange (raw)",
-    "category": "Fruits",
-    "caloriesPer100g": 47,
-    "protein": 0.9,
-    "carbs": 11.8,
-    "fat": 0.1
-  },
-  {
-    "id": "ing_35",
-    "name": "Strawberries (raw)",
-    "category": "Fruits",
-    "caloriesPer100g": 32,
-    "protein": 0.7,
-    "carbs": 7.7,
-    "fat": 0.3
-  },
-  {
-    "id": "ing_36",
-    "name": "Blueberries (raw)",
-    "category": "Fruits",
-    "caloriesPer100g": 57,
-    "protein": 0.7,
-    "carbs": 14.5,
-    "fat": 0.3
-  },
-  {
-    "id": "ing_37",
-    "name": "Avocado (raw)",
-    "category": "Fruits",
-    "caloriesPer100g": 160,
-    "protein": 2.0,
-    "carbs": 8.5,
-    "fat": 14.7
-  },
-  {
-    "id": "ing_38",
-    "name": "Lemon Juice (fresh)",
-    "category": "Fruits",
-    "caloriesPer100g": 22,
-    "protein": 0.4,
-    "carbs": 6.9,
-    "fat": 0.2
-  },
-
-  {
-    "id": "ing_39",
-    "name": "White Rice (dry, uncooked)",
-    "category": "Grains & Legumes",
-    "caloriesPer100g": 365,
-    "protein": 7.1,
-    "carbs": 80.0,
-    "fat": 0.7
-  },
-  {
-    "id": "ing_40",
-    "name": "Brown Rice (dry, uncooked)",
-    "category": "Grains & Legumes",
-    "caloriesPer100g": 370,
-    "protein": 7.9,
-    "carbs": 77.2,
-    "fat": 2.9
-  },
-  {
-    "id": "ing_41",
-    "name": "Rolled Oats (dry)",
-    "category": "Grains & Legumes",
-    "caloriesPer100g": 389,
-    "protein": 16.9,
-    "carbs": 66.3,
-    "fat": 6.9
-  },
-  {
-    "id": "ing_42",
-    "name": "Quinoa (dry, uncooked)",
-    "category": "Grains & Legumes",
-    "caloriesPer100g": 368,
-    "protein": 14.1,
-    "carbs": 64.2,
-    "fat": 6.1
-  },
-  {
-    "id": "ing_43",
-    "name": "Wheat Flour / Atta (whole)",
-    "category": "Grains & Legumes",
-    "caloriesPer100g": 340,
-    "protein": 13.2,
-    "carbs": 72.0,
-    "fat": 2.5
-  },
-  {
-    "id": "ing_44",
-    "name": "Red Lentils / Masoor Dal (dry)",
-    "category": "Grains & Legumes",
-    "caloriesPer100g": 353,
-    "protein": 25.8,
-    "carbs": 60.1,
-    "fat": 1.1
-  },
-  {
-    "id": "ing_45",
-    "name": "Chickpeas / Chana (dry)",
-    "category": "Grains & Legumes",
-    "caloriesPer100g": 364,
-    "protein": 19.3,
-    "carbs": 60.7,
-    "fat": 6.0
-  },
-  {
-    "id": "ing_46",
-    "name": "Black Beans (dry)",
-    "category": "Grains & Legumes",
-    "caloriesPer100g": 341,
-    "protein": 21.6,
-    "carbs": 62.4,
-    "fat": 1.4
-  },
-
-  {
-    "id": "ing_47",
-    "name": "Whole Egg (raw, 1 large ≈ 50g)",
+    "id": "ING009",
+    "name": "Eggs",
     "category": "Dairy & Eggs",
-    "caloriesPer100g": 143,
-    "protein": 12.6,
-    "carbs": 0.7,
-    "fat": 9.5
+    "calories_per_gram": 1.55,
+    "calories_per_100g": 155,
+    "image_url": "https://www.themealdb.com/images/ingredients/Eggs.png"
   },
   {
-    "id": "ing_48",
-    "name": "Egg White (raw)",
+    "id": "ING010",
+    "name": "Greek Yogurt",
     "category": "Dairy & Eggs",
-    "caloriesPer100g": 52,
-    "protein": 10.9,
-    "carbs": 0.7,
-    "fat": 0.2
+    "calories_per_gram": 0.59,
+    "calories_per_100g": 59,
+    "image_url": "https://www.themealdb.com/images/ingredients/Greek%20Yogurt.png"
   },
   {
-    "id": "ing_49",
-    "name": "Whole Cow's Milk",
+    "id": "ING011",
+    "name": "Milk",
     "category": "Dairy & Eggs",
-    "caloriesPer100g": 61,
-    "protein": 3.2,
-    "carbs": 4.8,
-    "fat": 3.3
+    "calories_per_gram": 0.61,
+    "calories_per_100g": 61,
+    "image_url": "https://www.themealdb.com/images/ingredients/Milk.png"
   },
   {
-    "id": "ing_50",
-    "name": "Greek Yogurt (plain, 0% fat)",
-    "category": "Dairy & Eggs",
-    "caloriesPer100g": 59,
-    "protein": 10.3,
-    "carbs": 3.6,
-    "fat": 0.4
-  },
-  {
-    "id": "ing_51",
+    "id": "ING012",
     "name": "Cheddar Cheese",
     "category": "Dairy & Eggs",
-    "caloriesPer100g": 403,
-    "protein": 24.9,
-    "carbs": 1.3,
-    "fat": 33.1
+    "calories_per_gram": 4.02,
+    "calories_per_100g": 402,
+    "image_url": "https://www.themealdb.com/images/ingredients/Cheddar%20Cheese.png"
   },
   {
-    "id": "ing_52",
-    "name": "Cottage Cheese (low fat)",
+    "id": "ING013",
+    "name": "Butter",
     "category": "Dairy & Eggs",
-    "caloriesPer100g": 86,
-    "protein": 11.8,
-    "carbs": 3.4,
-    "fat": 2.5
-  },
-
-  {
-    "id": "ing_53",
-    "name": "Almonds (raw)",
-    "category": "Nuts & Oils",
-    "caloriesPer100g": 579,
-    "protein": 21.2,
-    "carbs": 21.6,
-    "fat": 49.9
+    "calories_per_gram": 7.17,
+    "calories_per_100g": 717,
+    "image_url": "https://www.themealdb.com/images/ingredients/Butter.png"
   },
   {
-    "id": "ing_54",
-    "name": "Peanut Butter (natural)",
-    "category": "Nuts & Oils",
-    "caloriesPer100g": 588,
-    "protein": 25.1,
-    "carbs": 20.0,
-    "fat": 50.4
+    "id": "ING014",
+    "name": "Paneer",
+    "category": "Dairy & Eggs",
+    "calories_per_gram": 2.65,
+    "calories_per_100g": 265,
+    "image_url": "https://www.themealdb.com/images/ingredients/Paneer.png"
   },
   {
-    "id": "ing_55",
-    "name": "Olive Oil (extra virgin)",
-    "category": "Nuts & Oils",
-    "caloriesPer100g": 884,
-    "protein": 0.0,
-    "carbs": 0.0,
-    "fat": 100.0
+    "id": "ING015",
+    "name": "Cucumber",
+    "category": "Vegetables",
+    "calories_per_gram": 0.15,
+    "calories_per_100g": 15,
+    "image_url": "https://www.themealdb.com/images/ingredients/Cucumber.png"
   },
   {
-    "id": "ing_56",
-    "name": "Butter (unsalted)",
-    "category": "Nuts & Oils",
-    "caloriesPer100g": 717,
-    "protein": 0.9,
-    "carbs": 0.1,
-    "fat": 81.1
+    "id": "ING016",
+    "name": "Tomatoes",
+    "category": "Vegetables",
+    "calories_per_gram": 0.18,
+    "calories_per_100g": 18,
+    "image_url": "https://www.themealdb.com/images/ingredients/Tomatoes.png"
+  },
+  {
+    "id": "ING017",
+    "name": "Spinach",
+    "category": "Vegetables",
+    "calories_per_gram": 0.23,
+    "calories_per_100g": 23,
+    "image_url": "https://www.themealdb.com/images/ingredients/Spinach.png"
+  },
+  {
+    "id": "ING018",
+    "name": "Broccoli",
+    "category": "Vegetables",
+    "calories_per_gram": 0.34,
+    "calories_per_100g": 34,
+    "image_url": "https://www.themealdb.com/images/ingredients/Broccoli.png"
+  },
+  {
+    "id": "ING019",
+    "name": "Carrots",
+    "category": "Vegetables",
+    "calories_per_gram": 0.41,
+    "calories_per_100g": 41,
+    "image_url": "https://www.themealdb.com/images/ingredients/Carrots.png"
+  },
+  {
+    "id": "ING020",
+    "name": "Potatoes",
+    "category": "Vegetables",
+    "calories_per_gram": 0.77,
+    "calories_per_100g": 77,
+    "image_url": "https://www.themealdb.com/images/ingredients/Potatoes.png"
+  },
+  {
+    "id": "ING021",
+    "name": "Sweet Potatoes",
+    "category": "Vegetables",
+    "calories_per_gram": 0.86,
+    "calories_per_100g": 86,
+    "image_url": "https://www.themealdb.com/images/ingredients/Sweet%20Potatoes.png"
+  },
+  {
+    "id": "ING022",
+    "name": "Onions",
+    "category": "Vegetables",
+    "calories_per_gram": 0.4,
+    "calories_per_100g": 40,
+    "image_url": "https://www.themealdb.com/images/ingredients/Onions.png"
+  },
+  {
+    "id": "ING023",
+    "name": "Garlic",
+    "category": "Vegetables",
+    "calories_per_gram": 1.49,
+    "calories_per_100g": 149,
+    "image_url": "https://www.themealdb.com/images/ingredients/Garlic.png"
+  },
+  {
+    "id": "ING024",
+    "name": "Ginger",
+    "category": "Vegetables",
+    "calories_per_gram": 0.8,
+    "calories_per_100g": 80,
+    "image_url": "https://www.themealdb.com/images/ingredients/Ginger.png"
+  },
+  {
+    "id": "ING025",
+    "name": "Red Pepper",
+    "category": "Vegetables",
+    "calories_per_gram": 0.31,
+    "calories_per_100g": 31,
+    "image_url": "https://www.themealdb.com/images/ingredients/Red%20Pepper.png"
+  },
+  {
+    "id": "ING026",
+    "name": "Mushrooms",
+    "category": "Vegetables",
+    "calories_per_gram": 0.22,
+    "calories_per_100g": 22,
+    "image_url": "https://www.themealdb.com/images/ingredients/Mushrooms.png"
+  },
+  {
+    "id": "ING027",
+    "name": "Lettuce",
+    "category": "Vegetables",
+    "calories_per_gram": 0.15,
+    "calories_per_100g": 15,
+    "image_url": "https://www.themealdb.com/images/ingredients/Lettuce.png"
+  },
+  {
+    "id": "ING028",
+    "name": "Zucchini",
+    "category": "Vegetables",
+    "calories_per_gram": 0.17,
+    "calories_per_100g": 17,
+    "image_url": "https://www.themealdb.com/images/ingredients/Zucchini.png"
+  },
+  {
+    "id": "ING029",
+    "name": "Cauliflower",
+    "category": "Vegetables",
+    "calories_per_gram": 0.25,
+    "calories_per_100g": 25,
+    "image_url": "https://www.themealdb.com/images/ingredients/Cauliflower.png"
+  },
+  {
+    "id": "ING030",
+    "name": "Aubergine (Eggplant)",
+    "category": "Vegetables",
+    "calories_per_gram": 0.25,
+    "calories_per_100g": 25,
+    "image_url": "https://www.themealdb.com/images/ingredients/Aubergine.png"
+  },
+  {
+    "id": "ING031",
+    "name": "Avocado",
+    "category": "Fruits",
+    "calories_per_gram": 1.6,
+    "calories_per_100g": 160,
+    "image_url": "https://www.themealdb.com/images/ingredients/Avocado.png"
+  },
+  {
+    "id": "ING032",
+    "name": "Banana",
+    "category": "Fruits",
+    "calories_per_gram": 0.89,
+    "calories_per_100g": 89,
+    "image_url": "https://www.themealdb.com/images/ingredients/Banana.png"
+  },
+  {
+    "id": "ING033",
+    "name": "Apples",
+    "category": "Fruits",
+    "calories_per_gram": 0.52,
+    "calories_per_100g": 52,
+    "image_url": "https://www.themealdb.com/images/ingredients/Apples.png"
+  },
+  {
+    "id": "ING034",
+    "name": "Strawberries",
+    "category": "Fruits",
+    "calories_per_gram": 0.32,
+    "calories_per_100g": 32,
+    "image_url": "https://www.themealdb.com/images/ingredients/Strawberries.png"
+  },
+  {
+    "id": "ING035",
+    "name": "Blueberries",
+    "category": "Fruits",
+    "calories_per_gram": 0.57,
+    "calories_per_100g": 57,
+    "image_url": "https://www.themealdb.com/images/ingredients/Blueberries.png"
+  },
+  {
+    "id": "ING036",
+    "name": "Lemon",
+    "category": "Fruits",
+    "calories_per_gram": 0.29,
+    "calories_per_100g": 29,
+    "image_url": "https://www.themealdb.com/images/ingredients/Lemon.png"
+  },
+  {
+    "id": "ING037",
+    "name": "Orange",
+    "category": "Fruits",
+    "calories_per_gram": 0.47,
+    "calories_per_100g": 47,
+    "image_url": "https://www.themealdb.com/images/ingredients/Orange.png"
+  },
+  {
+    "id": "ING038",
+    "name": "Rice (Raw White)",
+    "category": "Grains & Legumes",
+    "calories_per_gram": 3.65,
+    "calories_per_100g": 365,
+    "image_url": "https://www.themealdb.com/images/ingredients/Rice.png"
+  },
+  {
+    "id": "ING039",
+    "name": "Rolled Oats",
+    "category": "Grains & Legumes",
+    "calories_per_gram": 3.89,
+    "calories_per_100g": 389,
+    "image_url": "https://www.themealdb.com/images/ingredients/Rolled%20Oats.png"
+  },
+  {
+    "id": "ING040",
+    "name": "Quinoa (Raw)",
+    "category": "Grains & Legumes",
+    "calories_per_gram": 3.68,
+    "calories_per_100g": 368,
+    "image_url": "https://www.themealdb.com/images/ingredients/Quinoa.png"
+  },
+  {
+    "id": "ING041",
+    "name": "Lentils (Raw)",
+    "category": "Grains & Legumes",
+    "calories_per_gram": 3.52,
+    "calories_per_100g": 352,
+    "image_url": "https://www.themealdb.com/images/ingredients/Lentils.png"
+  },
+  {
+    "id": "ING042",
+    "name": "Chickpeas (Raw)",
+    "category": "Grains & Legumes",
+    "calories_per_gram": 3.64,
+    "calories_per_100g": 364,
+    "image_url": "https://www.themealdb.com/images/ingredients/Chickpeas.png"
+  },
+  {
+    "id": "ING043",
+    "name": "Kidney Beans",
+    "category": "Grains & Legumes",
+    "calories_per_gram": 3.33,
+    "calories_per_100g": 333,
+    "image_url": "https://www.themealdb.com/images/ingredients/Kidney%20Beans.png"
+  },
+  {
+    "id": "ING044",
+    "name": "Tofu",
+    "category": "Grains & Legumes",
+    "calories_per_gram": 0.76,
+    "calories_per_100g": 76,
+    "image_url": "https://www.themealdb.com/images/ingredients/Tofu.png"
+  },
+  {
+    "id": "ING045",
+    "name": "Flour",
+    "category": "Grains & Legumes",
+    "calories_per_gram": 3.64,
+    "calories_per_100g": 364,
+    "image_url": "https://www.themealdb.com/images/ingredients/Flour.png"
+  },
+  {
+    "id": "ING046",
+    "name": "Almonds",
+    "category": "Nuts, Seeds & Oils",
+    "calories_per_gram": 5.79,
+    "calories_per_100g": 579,
+    "image_url": "https://www.themealdb.com/images/ingredients/Almonds.png"
+  },
+  {
+    "id": "ING047",
+    "name": "Walnuts",
+    "category": "Nuts, Seeds & Oils",
+    "calories_per_gram": 6.54,
+    "calories_per_100g": 654,
+    "image_url": "https://www.themealdb.com/images/ingredients/Walnuts.png"
+  },
+  {
+    "id": "ING048",
+    "name": "Peanut Butter",
+    "category": "Nuts, Seeds & Oils",
+    "calories_per_gram": 5.88,
+    "calories_per_100g": 588,
+    "image_url": "https://www.themealdb.com/images/ingredients/Peanut%20Butter.png"
+  },
+  {
+    "id": "ING049",
+    "name": "Olive Oil",
+    "category": "Nuts, Seeds & Oils",
+    "calories_per_gram": 8.84,
+    "calories_per_100g": 884,
+    "image_url": "https://www.themealdb.com/images/ingredients/Olive%20Oil.png"
+  },
+  {
+    "id": "ING050",
+    "name": "Honey",
+    "category": "Sweeteners",
+    "calories_per_gram": 3.04,
+    "calories_per_100g": 304,
+    "image_url": "https://www.themealdb.com/images/ingredients/Honey.png"
   }
 ]

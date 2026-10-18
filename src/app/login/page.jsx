@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import toast from "react-hot-toast";
 import {
   FaEnvelope,
   FaLock,
@@ -28,8 +28,13 @@ export default function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) return;
-    login(email, password);
+
+    if (!email.trim() || !password) {
+      toast.error("Please enter both email and password.");
+      return;
+    }
+
+    login(email.trim(), password);
   };
 
   const leftFeatures = [
@@ -67,26 +72,26 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-[calc(100vh-80px)] bg-[#030816] text-white flex items-center justify-center px-4 sm:px-6 lg:px-8 py-10 relative overflow-hidden">
-      {/* Background glow accents */}
+      {/* Ambient background glow accents */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#00A3FF]/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-900/20 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left Column: Visual & Value Props */}
+        {/* Left Column: Value Props & Branding */}
         <div className="lg:col-span-7 space-y-8 pr-0 lg:pr-6">
           <div className="space-y-3">
             <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#00A3FF] font-semibold block">
-              YOUR HEALTH. YOUR GOALS.
+              WELCOME BACK, ATHLETE
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-tight">
-              Fitness & Nutrition <br />
+              Continue Your <br />
               <span className="text-[#00A3FF] drop-shadow-[0_0_30px_rgba(0,163,255,0.5)]">
-                Made Simple.
+                Fitness Journey.
               </span>
             </h1>
             <p className="text-slate-400 text-sm sm:text-base max-w-lg leading-relaxed">
-              Track your calories, plan your workouts, calculate your BMI & BMR,
-              and build a healthier you — all in one place.
+              Log back in to review your workouts, monitor your calorie balance,
+              and check your BMI progress.
             </p>
           </div>
 
@@ -110,23 +115,23 @@ export default function LoginPage() {
           {/* Decorative script signature */}
           <div className="pt-4">
             <p className="font-serif italic text-lg text-[#00A3FF] tracking-wide -rotate-2">
-              Your journey to a healthier you starts here.
+              Discipline today builds the body you want tomorrow.
             </p>
           </div>
         </div>
 
-        {/* Right Column: Glassmorphic Auth Card */}
+        {/* Right Column: Login Card */}
         <div className="lg:col-span-5 w-full max-w-md mx-auto">
           <div className="bg-[#05112B]/85 border border-sky-800/40 rounded-3xl p-8 sm:p-10 shadow-[0_0_50px_rgba(0,163,255,0.15)] backdrop-blur-2xl space-y-6">
-            {/* Form Header */}
+            {/* Header */}
             <div className="text-center space-y-2">
               <div className="flex justify-center mb-1">
-                <Image
+                <img
                   src="/logo.png"
                   alt="Healthycise Logo"
                   width={42}
                   height={42}
-                  className="drop-shadow-[0_0_12px_rgba(0,163,255,0.8)]"
+                  className="object-contain drop-shadow-[0_0_12px_rgba(0,163,255,0.8)]"
                 />
               </div>
               <h2 className="text-2xl font-black tracking-tight text-white">
@@ -141,7 +146,7 @@ export default function LoginPage() {
             <div className="grid grid-cols-2 p-1 rounded-2xl bg-[#03091B] border border-sky-950">
               <button
                 type="button"
-                className="py-2.5 rounded-xl text-xs font-bold bg-[#00A3FF] text-white shadow-[0_0_15px_rgba(0,163,255,0.5)] transition"
+                className="py-2.5 rounded-xl text-xs font-bold bg-[#00A3FF] text-white shadow-[0_0_15px_rgba(0,163,255,0.5)] transition cursor-pointer"
               >
                 Sign In
               </button>
@@ -189,14 +194,13 @@ export default function LoginPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-3.5 text-slate-500 hover:text-slate-300 text-xs transition"
+                    className="absolute right-4 top-3.5 text-slate-500 hover:text-slate-300 text-xs transition cursor-pointer"
                   >
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
                 </div>
               </div>
 
-              {/* Remember me & Forgot Password */}
               <div className="flex items-center justify-between text-xs text-slate-400 pt-1">
                 <label className="flex items-center gap-2 cursor-pointer select-none">
                   <input
@@ -207,18 +211,12 @@ export default function LoginPage() {
                   />
                   <span className="text-[11px]">Remember me</span>
                 </label>
-                <a
-                  href="#"
-                  className="text-[11px] text-slate-400 hover:text-[#00A3FF] transition"
-                >
-                  Forgot password?
-                </a>
               </div>
 
               {/* Submit CTA */}
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#00A3FF] text-white font-bold text-xs uppercase tracking-wide hover:bg-[#008fe3] transition shadow-[0_0_25px_rgba(0,163,255,0.45)]"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#00A3FF] text-white font-bold text-xs uppercase tracking-wide hover:bg-[#008fe3] transition shadow-[0_0_25px_rgba(0,163,255,0.45)] cursor-pointer mt-2"
               >
                 <span>Sign In</span>
                 <FaArrowRight className="text-[10px]" />
@@ -233,11 +231,11 @@ export default function LoginPage() {
               </span>
             </div>
 
-            {/* Google Social OAuth Button */}
+            {/* Google OAuth Shortcut */}
             <button
               type="button"
               onClick={() => login("google.user@gmail.com", "password")}
-              className="w-full flex items-center justify-center gap-3 py-3 rounded-xl bg-[#03091B] border border-sky-950 hover:border-[#00A3FF] text-xs font-bold text-slate-200 transition"
+              className="w-full flex items-center justify-center gap-3 py-3 rounded-xl bg-[#03091B] border border-sky-950 hover:border-[#00A3FF] text-xs font-bold text-slate-200 transition cursor-pointer"
             >
               <FcGoogle className="text-base" />
               <span>Continue with Google</span>
@@ -245,7 +243,7 @@ export default function LoginPage() {
 
             {/* Switch to Register */}
             <p className="text-center text-xs text-slate-400 pt-1">
-              Don&apos;t have an account?{" "}
+              Don't have an account?{" "}
               <Link
                 href="/register"
                 className="text-[#00A3FF] font-bold hover:underline inline-flex items-center gap-1"

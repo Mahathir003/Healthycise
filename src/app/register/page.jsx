@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import toast from "react-hot-toast";
 import {
   FaUser,
@@ -105,7 +104,7 @@ export default function RegisterPage() {
             </h1>
             <p className="text-slate-400 text-sm sm:text-base max-w-lg leading-relaxed">
               Track your calories, plan your workouts, calculate your BMI & BMR,
-              and build a healthier you — all in one place[cite: 5].
+              and build a healthier you — all in one place.
             </p>
           </div>
 
@@ -129,7 +128,7 @@ export default function RegisterPage() {
           {/* Decorative script signature */}
           <div className="pt-4">
             <p className="font-serif italic text-lg text-[#00A3FF] tracking-wide -rotate-2">
-              Your journey to a healthier you starts here[cite: 5].
+              Your journey to a healthier you starts here.
             </p>
           </div>
         </div>
@@ -225,7 +224,7 @@ export default function RegisterPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-3.5 text-slate-500 hover:text-slate-300 text-xs transition"
+                    className="absolute right-4 top-3.5 text-slate-500 hover:text-slate-300 text-xs transition cursor-pointer"
                   >
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
@@ -249,7 +248,7 @@ export default function RegisterPage() {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-4 top-3.5 text-slate-500 hover:text-slate-300 text-xs transition"
+                    className="absolute right-4 top-3.5 text-slate-500 hover:text-slate-300 text-xs transition cursor-pointer"
                   >
                     {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
@@ -259,7 +258,7 @@ export default function RegisterPage() {
               {/* Submit CTA */}
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#00A3FF] text-white font-bold text-xs uppercase tracking-wide hover:bg-[#008fe3] transition shadow-[0_0_25px_rgba(0,163,255,0.45)] mt-2"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#00A3FF] text-white font-bold text-xs uppercase tracking-wide hover:bg-[#008fe3] transition shadow-[0_0_25px_rgba(0,163,255,0.45)] cursor-pointer mt-2"
               >
                 <span>Create Account</span>
                 <FaArrowRight className="text-[10px]" />
@@ -278,7 +277,7 @@ export default function RegisterPage() {
             <button
               type="button"
               onClick={() => login("google.user@gmail.com", "password")}
-              className="w-full flex items-center justify-center gap-3 py-3 rounded-xl bg-[#03091B] border border-sky-950 hover:border-[#00A3FF] text-xs font-bold text-slate-200 transition"
+              className="w-full flex items-center justify-center gap-3 py-3 rounded-xl bg-[#03091B] border border-sky-950 hover:border-[#00A3FF] text-xs font-bold text-slate-200 transition cursor-pointer"
             >
               <FcGoogle className="text-base" />
               <span>Sign up with Google</span>

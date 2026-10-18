@@ -1,39 +1,25 @@
 "use client";
+
 import { createContext, useContext, useState } from "react";
+import toast from "react-hot-toast";
 
 const PlanContext = createContext();
 
 export function PlanProvider({ children }) {
-  const [foodLog, setFoodLog] = useState([
-    { id: 1, name: "Chicken Breast", amount: 150, calories: 248 },
-    { id: 2, name: "Brown Rice", amount: 100, calories: 111 },
-    { id: 3, name: "Broccoli", amount: 150, calories: 51 },
-    { id: 4, name: "Banana", amount: 120, calories: 107 },
-  ]);
-
-  const [workoutPlan, setWorkoutPlan] = useState({
-    today: [
-      { id: 1, name: "Full Body Workout", duration: "45 min", calories: 320 },
-      { id: 2, name: "Cycling", duration: "25 min", calories: 250 },
-    ],
-    tomorrow: [
-      { id: 3, name: "Upper Body Strength", duration: "40 min", calories: 350 },
-      { id: 4, name: "Running", duration: "30 min", calories: 280 },
-    ],
+  const [customPlan, setCustomPlan] = useState({
+    goal: "Maintain fitness & build clean muscle",
+    targetCalories: 2000,
+    waterIntake: "3.5 Liters",
+    workoutsPerWeek: 5,
   });
 
-  const addFood = (item) => {
-    setFoodLog((prev) => [...prev, { ...item, id: Date.now() }]);
-  };
-
-  const removeFood = (id) => {
-    setFoodLog((prev) => prev.filter((item) => item.id !== id));
+  const updatePlan = (newPlanDetails) => {
+    setCustomPlan((prev) => ({ ...prev, ...newPlanDetails }));
+    toast.success("Your health plan has been updated successfully!");
   };
 
   return (
-    <PlanContext.Provider
-      value={{ foodLog, addFood, removeFood, workoutPlan, setWorkoutPlan }}
-    >
+    <PlanContext.Provider value={{ customPlan, updatePlan }}>
       {children}
     </PlanContext.Provider>
   );

@@ -1,95 +1,44 @@
 "use client";
-import { createContext, useContext, useState, useEffect, useRef } from "react";
-import toast from "react-hot-toast";
+import { createContext, useContext, useState } from "react";
 
 const PlanContext = createContext();
 
 export function PlanProvider({ children }) {
-  const [todayPlan, setTodayPlan] = useState([]);
-  const [savedList, setSavedList] = useState([]);
-  const isLoaded = useRef(false);
+  const [foodLog, setFoodLog] = useState([
+    { id: 1, name: "Chicken Breast", amount: 150, calories: 248 },
+    { id: 2, name: "Brown Rice", amount: 100, calories: 111 },
+    { id: 3, name: "Broccoli", amount: 150, calories: 51 },
+    { id: 4, name: "Banana", amount: 120, calories: 107 },
+  ]);
 
-  // Load from localStorage on mount
-  useEffect(() => {
-    try {
-      const storedPlan = localStorage.getItem("fitlog_today_plan");
-      const storedSaved = localStorage.getItem("fitlog_saved");
-      if (storedPlan) setTodayPlan(JSON.parse(storedPlan));
-      if (storedSaved) setSavedList(JSON.parse(storedSaved));
-    } catch (e) {
-      console.error("Failed to load from localStorage", e);
-    } finally {
-      isLoaded.current = true;
-    }
-  }, []);
+  const [workoutPlan, setWorkoutPlan] = useState({
+    today: [
+      { id: 1, name: "Full Body Workout", duration: "45 min", calories: 320 },
+      { id: 2, name: "Cycling", duration: "25 min", calories: 250 },
+    ],
+    tomorrow: [
+      { id: 3, name: "Upper Body Strength", duration: "40 min", calories: 350 },
+      { id: 4, name: "Running", duration: "30 min", calories: 280 },
+    ],
+  });
 
-  // Sync with localStorage only AFTER initial load
-  useEffect(() => {
-    if (!isLoaded.current) return;
-    localStorage.setItem("fitlog_today_plan", JSON.stringify(todayPlan));
-  }, [todayPlan]);
-
-  useEffect(() => {
-    if (!isLoaded.current) return;
-    localStorage.setItem("fitlog_saved", JSON.stringify(savedList));
-  }, [savedList]);
-
-  const addToTodayPlan = (workout) => {
-    if (todayPlan.some((item) => item.id === workout.id)) {
-      toast.error("Already in today's plan!");
-      return;
-    }
-    if (todayPlan.length >= 5) {
-      toast.error("Cap of 5 lifts reached for today!");
-      return;
-    }
-    setTodayPlan((prev) => [...prev, { ...workout, isCompleted: false }]);
-    toast.success("Added to today's plan!");
+  const addFood = (item) => {
+    setFoodLog((prev) => [...prev, { ...item, id: Date.now() }]);
   };
 
-  const addToSaved = (workout) => {
-    if (savedList.some((item) => item.id === workout.id)) {
-      toast.error("Already saved for later!");
-      return;
-    }
-    setSavedList((prev) => [...prev, workout]);
-    toast.success("Saved for later!");
-  };
-
-  const removeFromTodayPlan = (id) => {
-    setTodayPlan((prev) => prev.filter((item) => item.id !== id));
-    toast.error("Removed from today's plan");
-  };
-
-  const removeFromSaved = (id) => {
-    setSavedList((prev) => prev.filter((item) => item.id !== id));
-    toast.error("Removed from saved list");
-  };
-
-  const toggleComplete = (id) => {
-    setTodayPlan((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, isCompleted: !item.isCompleted } : item,
-      ),
-    );
-    toast.success("Workout status updated!");
+  const removeFood = (id) => {
+    setFoodLog((prev) => prev.filter((item) => item.id !== id));
   };
 
   return (
     <PlanContext.Provider
-      value={{
-        todayPlan,
-        savedList,
-        addToTodayPlan,
-        addToSaved,
-        removeFromTodayPlan,
-        removeFromSaved,
-        toggleComplete,
-      }}
+      value={{ foodLog, addFood, removeFood, workoutPlan, setWorkoutPlan }}
     >
       {children}
     </PlanContext.Provider>
   );
 }
 
-export const usePlan = () => useContext(PlanContext);
+export function usePlan() {
+  return useContext(PlanContext);
+}

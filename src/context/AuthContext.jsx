@@ -1,97 +1,49 @@
 "use client";
+import { createContext, useContext, useState } from "react";
 
-import { createContext, useContext, useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
-
-const AuthContext = createContext(null);
+const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const router = useRouter();
-
-  // Load user from localStorage on mount
-  useEffect(() => {
-    try {
-      const storedUser = localStorage.getItem("fitlog_user");
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      }
-    } catch (e) {
-      console.error("Failed to load user from localStorage", e);
-    }
-  }, []);
+  const [user, setUser] = useState({
+    name: "Mahathir Mahmud Mahi",
+    email: "mahathir@gmail.com",
+    age: 21,
+    gender: "Male",
+    height: 170,
+    weight: 69.5,
+    activityLevel: "Moderately Active",
+    dietPreference: "Non-Vegetarian",
+    medicalConditions: "None",
+    allergies: "None",
+    fitnessLevel: "Moderate",
+    isLoggedIn: true, // Set to false if you want landing page default
+  });
 
   const login = (email, password) => {
-    const mockUser = {
-      name: email.split("@")[0].toUpperCase(),
-      email,
-      weight: 70, // kg default
-      height: 175, // cm default
-      age: 22,
-      gender: "male",
-      calorieGoal: 2200,
-      avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(email)}`,
-    };
-
-    setUser(mockUser);
-    localStorage.setItem("fitlog_user", JSON.stringify(mockUser));
-    toast.success(`Welcome back, ${mockUser.name}!`);
-    router.push("/");
+    setUser((prev) => ({ ...prev, isLoggedIn: true, email }));
   };
 
-  const register = (name, email) => {
-    const newUser = {
-      name,
-      email,
-      weight: 70, // kg
-      height: 175, // cm
-      age: 22,
-      gender: "male",
-      calorieGoal: 2200,
-      avatar: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(email)}`,
-    };
-
-    setUser(newUser);
-    localStorage.setItem("fitlog_user", JSON.stringify(newUser));
-    toast.success("Account created successfully!");
-    router.push("/");
-  };
-
-  const updateProfile = (updatedData) => {
-    if (!user) return;
-    const updated = { ...user, ...updatedData };
-    setUser(updated);
-    localStorage.setItem("fitlog_user", JSON.stringify(updated));
-    toast.success("Profile & health metrics updated!");
+  const register = (name, email, password) => {
+    setUser((prev) => ({ ...prev, isLoggedIn: true, name, email }));
   };
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem("fitlog_user");
-    toast.success("Logged out successfully");
-    router.push("/login");
+    setUser((prev) => ({ ...prev, isLoggedIn: false }));
+  };
+
+  const updateProfile = (updatedData) => {
+    setUser((prev) => ({ ...prev, ...updatedData }));
   };
 
   return (
     <AuthContext.Provider
-      value={{ user, login, register, updateProfile, logout }}
+      value={{ user, login, register, logout, updateProfile }}
     >
       {children}
     </AuthContext.Provider>
   );
 }
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    return {
-      user: null,
-      login: () => {},
-      register: () => {},
-      updateProfile: () => {},
-      logout: () => {},
-    };
-  }
-  return context;
-};
+export function useAuth() {
+  return useContext(AuthContext);
+}

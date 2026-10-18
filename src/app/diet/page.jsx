@@ -224,7 +224,8 @@ export default function DietPage() {
       name: "Cauliflower",
       category: "Vegetables",
       calories_per_100g: 25,
-      image_url: "https://www.themealdb.com/images/ingredients/Cauliflower.png",
+      image_url:
+        "https://pngimg.com/uploads/cauliflower/cauliflower_PNG99309.png",
     },
     {
       id: "ING030",
@@ -555,11 +556,15 @@ export default function DietPage() {
                   key={item.id}
                   className="bg-[#05112B]/85 border border-sky-800/40 rounded-3xl overflow-hidden backdrop-blur-xl transition-all duration-200 flex flex-col justify-between shadow-[0_0_20px_rgba(0,163,255,0.08)] hover:border-[#00A3FF]"
                 >
-                  {/* Image Header */}
+                  {/* Image Header with Fallback on Error */}
                   <div className="relative w-full h-32 bg-[#03091B] flex items-center justify-center p-4 overflow-hidden">
                     <img
                       src={item.image_url}
                       alt={item.name}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "/customed-ingrediant.JPG";
+                      }}
                       className="max-h-full max-w-full object-contain opacity-90 hover:scale-105 transition duration-300"
                     />
                     <span className="absolute top-3 left-3 text-[9px] font-mono uppercase font-bold text-[#00A3FF] bg-[#03091B]/80 px-2.5 py-1 rounded-full border border-sky-900 backdrop-blur-md">

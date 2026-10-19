@@ -513,7 +513,7 @@ function HomeContent() {
       <section className="relative w-full min-h-[640px] sm:min-h-[720px] flex items-center overflow-hidden bg-[#030816]">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src="/hero-banner.JPG"
+            src="/hero-banner.jpg"
             alt="Healthycise Hero Athlete"
             className="w-full h-full object-cover object-right opacity-90"
           />

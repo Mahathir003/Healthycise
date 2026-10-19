@@ -35,39 +35,3 @@ Icons: React Icons
 Notifications: React Hot Toast
 
 Version Control: Git & GitHub
-
-📁 Project Structure
-Plaintext
-src/
-├── app/
-│ ├── workouts/
-│ │ ├── page.jsx # Workout library & interactive To-Do list
-│ │ └── [id]/
-│ │ └── page.jsx # Dynamic workout single-item detail view
-│ ├── diet/
-│ │ └── page.jsx # Ingredient library & portion-based diet planner
-│ ├── layout.jsx # Global root layout & providers
-│ └── page.jsx # Home dashboard
-public/
-├── customed-workout.png # Custom user workout image asset
-└── customed-ingrediant.JPG # Custom user ingredient image asset
-🚀 Getting Started Locally
-Prerequisites
-Make sure you have Node.js installed on your machine.
-
-Installation & Setup
-Clone the repository:
-
-Bash
-git clone https://github.com/Mahathir003/Healthycise.git
-cd Healthycise
-Install dependencies:
-
-Bash
-npm install
-Run the development server:
-
-Bash
-npm run dev
-Open your browser:
-Navigate to http://localhost:3000 to view the application.
